@@ -58,7 +58,7 @@ const Login: React.FC = () => {
 
       try {
         console.log("Enviando token a backend:", access_token);
-        const res = await fetch("http://localhost:3000/auth/oauth/google", {
+        const res = await fetch("http://localhost:3000/oauth/google", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
