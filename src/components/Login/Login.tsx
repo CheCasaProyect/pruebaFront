@@ -49,8 +49,9 @@ const Login: React.FC = () => {
   
         const data = await res.json();
         if (data?.accessToken) {
+          console.log("data:", data);
           localStorage.setItem("token", data.accessToken);
-          router.push("/dashboard");
+          router.push("/profile");
         } else {
           console.error("Error al iniciar sesión con Google.");
         }
