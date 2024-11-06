@@ -39,6 +39,7 @@ const Login: React.FC = () => {
       console.log("Token de Google:", access_token);
   
       try {
+        console.log("Enviando token a backend:", access_token);
         const res = await fetch("http://localhost:3000/oauth/google", {
           method: "POST",
           headers: {
@@ -48,8 +49,10 @@ const Login: React.FC = () => {
         });
   
         const data = await res.json();
+        console.log("Respuesta del backend:", data);
+
         if (data?.accessToken) {
-          console.log("data:", data);
+          console.log("Token de acceso obtenido:", data.accessToken);
           localStorage.setItem("token", data.accessToken);
           router.push("/profile");
         } else {
