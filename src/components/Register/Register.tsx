@@ -20,7 +20,7 @@ const Register = () => {
       values.phone = String(values.phone);
       console.log("Datos enviados:", JSON.stringify(values));
 
-      const response = await fetch("https://proyectochecasa.onrender.com/auth/signup", {
+      const response = await fetch("https://pruebaback-8id4.onrender.com/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

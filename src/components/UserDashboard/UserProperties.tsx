@@ -19,7 +19,7 @@ const MyProperties: React.FC<MyPropertiesProps> = () => {
 
   useEffect(() => {
     if (userId) {
-      fetch(`https://proyectochecasa.onrender.com/properties/${userId}`)
+      fetch(`https://pruebaback-8id4.onrender.com/properties/${userId}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error("Error al obtener propiedades");

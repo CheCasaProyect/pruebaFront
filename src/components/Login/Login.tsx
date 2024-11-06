@@ -39,7 +39,7 @@ const Login: React.FC = () => {
       console.log("Token de Google:", access_token);
   
       try {
-        const res = await fetch("https://proyectochecasa.onrender.com/auth/google", {
+        const res = await fetch("https://pruebaback-8id4.onrender.com/auth/google", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -73,7 +73,7 @@ const Login: React.FC = () => {
     const { email, password } = values;
     console.log("Formulario enviado:", values);
     try {
-      const res = await fetch("https://proyectochecasa.onrender.com/auth/login", {
+      const res = await fetch("https://pruebaback-8id4.onrender.com/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
