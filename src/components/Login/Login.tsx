@@ -39,7 +39,7 @@ const Login: React.FC = () => {
       console.log("Token de Google:", access_token);
   
       try {
-        const res = await fetch("http://localhost:3000/oauth/google/redirect", {
+        const res = await fetch("http://localhost:3000/oauth/google", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
