@@ -38,11 +38,11 @@ const Login: React.FC = () => {
     onSuccess: async (response) => {
       const { access_token } = response;
       console.log("Token de Google:", access_token);
-      router.push('/profile')
+   
 
       try {
         console.log("Enviando token a backend:", access_token);
-        const res = await fetch("http://localhost:3000/auth/google", {
+        const res = await fetch("http://localhost:3000/oauth/google", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
