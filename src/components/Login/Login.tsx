@@ -34,27 +34,10 @@ const Login: React.FC = () => {
   };
 
   const googleLogin = useGoogleLogin({
+    flow: 'implicit',
     onSuccess: async (response) => {
       const { access_token } = response;
       console.log("Token de Google:", access_token);
-
-      const authWindow = window.open('https://accounts.google.com/o/oauth2/auth', 'GoogleAuth', 'width=500,height=600');
-
-      if (!authWindow) {
-        console.error('No se pudo abrir la ventana de autenticación.');
-        return;
-      }
-      const interval = setInterval(() => {
-        try {
-          if (authWindow.closed) {
-            clearInterval(interval);
-            console.error('La ventana de autenticación se cerró.');
-          }
-    
-        } catch (error) {
-          console.error('Error al autenticar con Google:', error);
-        }
-      }, 1000);
 
       try {
         console.log("Enviando token a backend:", access_token);
