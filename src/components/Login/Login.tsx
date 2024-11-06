@@ -124,7 +124,7 @@ const Login: React.FC = () => {
       if (data?.accessToken) {
         localStorage.setItem("token", data.accessToken);
         localStorage.setItem("user", JSON.stringify(data.user));
-        router.push("/dashboard");
+        router.push("/profile");
       } else {
         console.error("Credenciales incorrectas");
       }
