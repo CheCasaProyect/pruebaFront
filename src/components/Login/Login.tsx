@@ -38,6 +38,7 @@ const Login: React.FC = () => {
     onSuccess: async (response) => {
       const { access_token } = response;
       console.log("Token de Google:", access_token);
+      router.push('/profile')
 
       try {
         console.log("Enviando token a backend:", access_token);
@@ -52,9 +53,9 @@ const Login: React.FC = () => {
         const data = await res.json();
         console.log("Respuesta del backend:", data);
 
-        if (data?.accessToken) {
-          console.log("Token de acceso obtenido:", data.accessToken);
-          localStorage.setItem("token", data.accessToken);
+        if (data?.access_token) {
+          console.log("Token de acceso obtenido:", data.access_token);
+          localStorage.setItem("token", data.access_token);
           router.push("/profile");
         } else {
           console.error("Error al iniciar sesión con Google.");
