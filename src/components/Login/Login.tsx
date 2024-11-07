@@ -160,9 +160,7 @@ const Login: React.FC = () => {
       } else if (res.status === 400) {
         const data = await res.json();
         console.error("Credenciales incorrectas:", data.message);
-      } else {
-        console.error(`Error inesperado. Estado: ${res.status}`);
-      }
+      } 
     } catch (error) {
       console.error("Error en el proceso de login:", error);
     }
