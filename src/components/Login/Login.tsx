@@ -131,10 +131,45 @@ const Login: React.FC = () => {
     password: Yup.string().required("Requerido"),
   });
 
+  // const handleSubmit = async (values: any) => {
+  //   const { email, password } = values;
+  //   console.log("Formulario enviado:", values);
+  
+  //   try {
+  //     const res = await fetch(
+  //       "http://localhost:3000/auth/login",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({ email, password }),
+  //       }
+  //     );
+  
+  //     if (res.status === 200) {
+  //       const data = await res.json();
+  
+  //       if (data?.access_token) {
+  //         localStorage.setItem("token", data.access_token);
+  //         localStorage.setItem("user", JSON.stringify(data.user));
+  //         router.push("/profile");
+  //       } else {
+  //         console.error("No se recibió el token de acceso.");
+  //       }
+  //     } else if (res.status === 400) {
+  //       const data = await res.json();
+  //       console.error("Credenciales incorrectas:", data.message);
+  //     } 
+  //   } catch (error) {
+  //     console.error("Error en el proceso de login:", error);
+  //   }
+  // };
+  
+
   const handleSubmit = async (values: any) => {
     const { email, password } = values;
     console.log("Formulario enviado:", values);
-  
     try {
       const res = await fetch(
         "http://localhost:3000/auth/login",
@@ -146,55 +181,20 @@ const Login: React.FC = () => {
           body: JSON.stringify({ email, password }),
         }
       );
-  
-      if (res.status === 200) {
-        const data = await res.json();
-  
-        if (data?.access_token) {
-          localStorage.setItem("token", data.access_token);
-          localStorage.setItem("user", JSON.stringify(data.user));
-          router.push("/profile");
-        } else {
-          console.error("No se recibió el token de acceso.");
-        }
-      } else if (res.status === 400) {
-        const data = await res.json();
-        console.error("Credenciales incorrectas:", data.message);
-      } 
+
+      const data = await res.json();
+
+      if (data?.access_token) {
+        localStorage.setItem("token", data.access_token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        router.push("/profile");
+      } else {
+        console.error("Credenciales incorrectas");
+      }
     } catch (error) {
       console.error("Error en el proceso de login:", error);
     }
   };
-  
-
-  // const handleSubmit = async (values: any) => {
-  //   const { email, password } = values;
-  //   console.log("Formulario enviado:", values);
-  //   try {
-  //     const res = await fetch(
-  //       "https://proyectochecasa.onrender.com/auth/login",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({ email, password }),
-  //       }
-  //     );
-
-  //     const data = await res.json();
-
-  //     if (data?.access_token) {
-  //       localStorage.setItem("token", data.access_token);
-  //       localStorage.setItem("user", JSON.stringify(data.user));
-  //       router.push("/profile");
-  //     } else {
-  //       console.error("Credenciales incorrectas");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error en el proceso de login:", error);
-  //   }
-  // };
 
   return (
     <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen bg-[#fffefe] text-[#0a0a0a] pt-20 lg:pt-40 pb-20">
