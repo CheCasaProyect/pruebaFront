@@ -133,6 +133,7 @@ const Login: React.FC = () => {
       .required("Contraseña es obligatoria"),
   });
 
+
   const handleSubmit = async (values: any) => {
     const { email, password } = values;
     console.log("Formulario enviado:", values);
@@ -151,6 +152,7 @@ const Login: React.FC = () => {
   
       if (res.status === 200) {
         const data = await res.json();
+        console.log("Datos recibidos:", data);
   
         if (data?.token) {
           localStorage.setItem("token", data.token);
@@ -165,6 +167,12 @@ const Login: React.FC = () => {
       } 
     } catch (error) {
       console.error("Error en el proceso de login:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Hubo un problema con el inicio de sesión.",
+        confirmButtonColor: "#0a0a0a",
+      });
     }
   };
   
@@ -308,3 +316,15 @@ const Login: React.FC = () => {
 };
 
 export default Login;
+function setSuccessMessage(arg0: string) {
+  throw new Error("Function not implemented.");
+}
+
+function setToken(token: any) {
+  throw new Error("Function not implemented.");
+}
+
+function setError(message: string) {
+  throw new Error("Function not implemented.");
+}
+
