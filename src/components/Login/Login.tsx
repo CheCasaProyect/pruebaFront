@@ -149,9 +149,9 @@ const Login: React.FC = () => {
           body: JSON.stringify({ email, password }),
         }
       );
-      console.log("Respuesta del servidor (status):", res.status);
+
   
-      if (res.status === 200) {
+      if (res.status === 201) {
         const data = await res.json();
         console.log("Datos recibidos:", data);
   
