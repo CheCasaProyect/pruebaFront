@@ -12,9 +12,24 @@ const UserDashboard: React.FC = () => {
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      try {
+        const userData: IUser = JSON.parse(storedUser);
+        setUser(userData);
+      } catch (error) {
+        console.error("Error al analizar el usuario:", error);
+      }
+    } else {
+      console.log("No hay usuario en localStorage.");
     }
   }, []);
+
+  if (user === null) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-gray-200">
+        <p>Cargando datos del usuario...</p>
+      </div>
+    );
+  }
   
   return (
     <div className="flex min-h-screen bg-[#f2f2f2] text-[#0a0a0a]">
