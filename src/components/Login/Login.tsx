@@ -127,8 +127,10 @@ const Login: React.FC = () => {
 
   const initialValues = { email: "", password: "" };
   const validationSchema = Yup.object({
-    email: Yup.string().email("Email inválido").required("Requerido"),
-    password: Yup.string().required("Requerido"),
+    email: Yup.string().email("Formato de email inválido").required("Email es obligatorio"),
+    password: Yup.string()
+      .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,15}$/, "La contraseña debe contener entre 8 y 15 caracteres, al menos una mayúscula, una minúscula, un número y un carácter especial (!@#$%^&*)")
+      .required("Contraseña es obligatoria"),
   });
 
   // const handleSubmit = async (values: any) => {
@@ -184,8 +186,8 @@ const Login: React.FC = () => {
 
       const data = await res.json();
 
-      if (data?.access_token) {
-        localStorage.setItem("token", data.access_token);
+      if (data?.accessToken) {
+        localStorage.setItem("token", data.accessToken);
         localStorage.setItem("user", JSON.stringify(data.user));
         router.push("/profile");
       } else {
