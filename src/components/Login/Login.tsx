@@ -44,7 +44,7 @@ const Login: React.FC = () => {
 
       try {
         console.log("Enviando token a backend:", access_token);
-        const res = await fetch("https://proyectochecasa.onrender.com/google/login", {
+        const res = await fetch("http://localhost:3000/google/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -137,7 +137,7 @@ const Login: React.FC = () => {
   
     try {
       const res = await fetch(
-        "https://proyectochecasa.onrender.com/auth/login",
+        "http://localhost:3000/auth/login",
         {
           method: "POST",
           headers: {
