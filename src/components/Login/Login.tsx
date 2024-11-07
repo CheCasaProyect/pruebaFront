@@ -149,6 +149,7 @@ const Login: React.FC = () => {
           body: JSON.stringify({ email, password }),
         }
       );
+      console.log("Respuesta del servidor (status):", res.status);
   
       if (res.status === 200) {
         const data = await res.json();
@@ -164,6 +165,13 @@ const Login: React.FC = () => {
       } else if (res.status === 400) {
         const data = await res.json();
         console.error("Credenciales incorrectas:", data.message);
+        setLocalError(data.message || "Credenciales incorrectas.");
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: data.message || "Credenciales incorrectas.",
+          confirmButtonColor: "#0a0a0a",
+        });
       } 
     } catch (error) {
       console.error("Error en el proceso de login:", error);
@@ -315,16 +323,5 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
-function setSuccessMessage(arg0: string) {
-  throw new Error("Function not implemented.");
-}
 
-function setToken(token: any) {
-  throw new Error("Function not implemented.");
-}
-
-function setError(message: string) {
-  throw new Error("Function not implemented.");
-}
 
